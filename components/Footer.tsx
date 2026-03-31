@@ -1,6 +1,30 @@
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, Instagram, Phone, Mail } from "lucide-react";
-import { footerLinks } from "@/lib/data";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Phone,
+  Mail,
+} from "lucide-react";
+
+const footerLinks = {
+  Trending: ["Best Deals", "Electronics", "Groceries", "Health & Beauty"],
+  Information: [
+    "About us",
+    "Delivery",
+    "Contact Us",
+    "FAQs",
+    "Shipping & Return",
+  ],
+  "Customer Care": [
+    "My Account",
+    "Order History",
+    "Viewed Items",
+    "Wishlist",
+    "Become a Vendor",
+  ],
+};
 
 export default function Footer() {
   return (
@@ -11,7 +35,9 @@ export default function Footer() {
           <div>
             {/* Logo */}
             <div className="flex items-baseline gap-0.5 mb-3">
-              <span className="text-white font-extrabold text-2xl leading-none">WIN</span>
+              <span className="text-white font-extrabold text-2xl leading-none">
+                WIN
+              </span>
               <span className="text-white text-sm font-light">store</span>
             </div>
 
@@ -24,7 +50,9 @@ export default function Footer() {
             </div>
             <div className="text-sm mb-4 ml-5">0317 1777015.</div>
 
-            <p className="text-[#00b4b4] font-semibold text-sm mb-1">Contact info</p>
+            <p className="text-[#00b4b4] font-semibold text-sm mb-1">
+              Contact info
+            </p>
             <div className="flex items-center gap-2 text-sm mb-5">
               <Mail size={13} className="text-gray-400" />
               <span>info@winstore.pk</span>
@@ -37,6 +65,7 @@ export default function Footer() {
                   key={i}
                   href="#"
                   className="w-7 h-7 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-[#00b4b4] hover:border-[#00b4b4] transition-colors"
+                  aria-label={`Social link ${i + 1}`}
                 >
                   <Icon size={13} />
                 </a>
@@ -47,7 +76,9 @@ export default function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-[#00b4b4] font-bold text-base mb-4">{title}</h3>
+              <h3 className="text-[#00b4b4] font-bold text-base mb-4">
+                {title}
+              </h3>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
@@ -67,7 +98,7 @@ export default function Footer() {
         {/* Payment Methods */}
         <div className="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
           <div /> {/* spacer */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap justify-center">
             {/* Payment badges */}
             {["VISA", "MasterCard", "CASH", "Easy Install"].map((method) => (
               <div

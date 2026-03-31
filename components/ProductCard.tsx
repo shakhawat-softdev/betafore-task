@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Product } from "@/lib/data";
+import { NormalizedProduct } from "@/lib/utils";
 
 interface Props {
-  product: Product;
+  product: NormalizedProduct;
 }
 
 export default function ProductCard({ product }: Props) {
@@ -27,25 +27,35 @@ export default function ProductCard({ product }: Props) {
       </div>
 
       {/* Image */}
-      <div className="relative h-36 mx-3 my-2">
+      <div className="relative h-36 mx-3 my-2 bg-gray-50 rounded">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-contain"
+          className="object-contain p-2"
           sizes="200px"
+          onError={(e) => {
+            e.currentTarget.src = "/fallback-product.jpg";
+          }}
         />
       </div>
 
       {/* Pricing */}
       <div className="px-3 pb-2 flex items-center gap-2">
         <span className="text-xs text-gray-400 line-through">
-          RS {product.originalPrice.toLocaleString()}
+          Rs {product.originalPrice.toLocaleString()}
         </span>
         <span className="text-sm font-bold text-[#00b4b4]">
-          RS {product.price.toLocaleString()}
+          Rs {product.price.toLocaleString()}
         </span>
       </div>
+
+      {/* Rating */}
+      {product.rating && (
+        <div className="px-3 pb-1 text-xs text-yellow-500">
+          ★★★★★ ({product.rating})
+        </div>
+      )}
 
       {/* Add to Cart */}
       <div className="px-3 pb-3">

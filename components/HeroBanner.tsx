@@ -3,17 +3,70 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { heroSlides } from "@/lib/data";
+
+interface HeroSlide {
+  id: number;
+  headline1: string;
+  headline2: string;
+  body: string;
+  cta: string;
+  badge: string;
+  bg: string;
+  image1: string;
+  image2: string;
+}
+
+const heroSlides: HeroSlide[] = [
+  {
+    id: 1,
+    headline1: "Shop Computer",
+    headline2: "& experience",
+    body: "Discover quality products at great prices. Shop our selection of computers, electronics, and more.",
+    cta: "View More",
+    badge: "40% Off",
+    bg: "#f0f0e8",
+    image1:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=220&q=80",
+    image2:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=220&q=80",
+  },
+  {
+    id: 2,
+    headline1: "Latest Smartphones",
+    headline2: "& Gadgets",
+    body: "Discover the best deals on smartphones, tablets, and the latest tech accessories at unbeatable prices.",
+    cta: "View More",
+    badge: "30% Off",
+    bg: "#eaf0f5",
+    image1:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=220&q=80",
+    image2:
+      "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=220&q=80",
+  },
+  {
+    id: 3,
+    headline1: "Home Appliances",
+    headline2: "Big Sale",
+    body: "Save big on washing machines, refrigerators, air conditioners, and all major home appliances.",
+    cta: "View More",
+    badge: "50% Off",
+    bg: "#f0f5ea",
+    image1:
+      "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=220&q=80",
+    image2:
+      "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=220&q=80",
+  },
+];
 
 export default function HeroBanner() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(
+    const timer = setInterval(
       () => setCurrent((p) => (p + 1) % heroSlides.length),
       5000,
     );
-    return () => clearInterval(t);
+    return () => clearInterval(timer);
   }, []);
 
   const prev = () =>
@@ -51,7 +104,7 @@ export default function HeroBanner() {
         </div>
 
         {/* Images */}
-        <div className="relative flex items-center gap-4">
+        <div className="relative flex items-center gap-4 hidden sm:flex">
           {/* Orange badge */}
           <div
             className="absolute -top-4 right-0 z-20 w-24 h-24 rounded-full bg-orange-500 flex flex-col items-center justify-center text-white font-extrabold shadow-xl"
@@ -84,13 +137,15 @@ export default function HeroBanner() {
       {/* Prev/Next */}
       <button
         onClick={prev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-1.5 shadow transition-all"
+        className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-1.5 shadow transition-all z-10"
+        aria-label="Previous slide"
       >
         <ChevronLeft size={18} className="text-gray-700" />
       </button>
       <button
         onClick={next}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-1.5 shadow transition-all"
+        className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-1.5 shadow transition-all z-10"
+        aria-label="Next slide"
       >
         <ChevronRight size={18} className="text-gray-700" />
       </button>
@@ -101,11 +156,10 @@ export default function HeroBanner() {
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`rounded-full transition-all duration-300 ${
-              i === current
-                ? "w-6 h-2.5 bg-[#00b4b4]"
-                : "w-2.5 h-2.5 bg-gray-400"
+            className={`h-2 w-2 rounded-full transition-colors ${
+              i === current ? "bg-[#00b4b4]" : "bg-gray-400"
             }`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
