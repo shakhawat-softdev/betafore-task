@@ -9,18 +9,26 @@ export default function HeroBanner() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setCurrent((p) => (p + 1) % heroSlides.length), 5000);
+    const t = setInterval(
+      () => setCurrent((p) => (p + 1) % heroSlides.length),
+      5000,
+    );
     return () => clearInterval(t);
   }, []);
 
-  const prev = () => setCurrent((p) => (p - 1 + heroSlides.length) % heroSlides.length);
+  const prev = () =>
+    setCurrent((p) => (p - 1 + heroSlides.length) % heroSlides.length);
   const next = () => setCurrent((p) => (p + 1) % heroSlides.length);
   const slide = heroSlides[current];
 
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ background: slide.bg, minHeight: 320, transition: "background 0.5s" }}
+      style={{
+        background: slide.bg,
+        minHeight: 320,
+        transition: "background 0.5s",
+      }}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between py-10 min-h-[320px]">
         {/* Text */}
@@ -28,13 +36,16 @@ export default function HeroBanner() {
           <h1 className="text-4xl font-black text-gray-900 leading-tight mb-1">
             {slide.headline1}
           </h1>
-          <h1 className="text-4xl font-black leading-tight mb-4" style={{ color: "#00b4b4" }}>
+          <h1
+            className="text-4xl font-black leading-tight mb-4"
+            style={{ color: "#00b4b4" }}
+          >
             {slide.headline2}
           </h1>
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">{slide.body}</p>
-          <button
-            className="bg-[#1a6ff0] text-white text-sm font-semibold px-6 py-2.5 rounded hover:bg-[#1558c0] transition-colors"
-          >
+          <p className="text-gray-600 text-sm leading-relaxed mb-6">
+            {slide.body}
+          </p>
+          <button className="bg-[#1a6ff0] text-white text-sm font-semibold px-6 py-2.5 rounded hover:bg-[#1558c0] transition-colors">
             {slide.cta}
           </button>
         </div>
@@ -47,7 +58,9 @@ export default function HeroBanner() {
             style={{ fontSize: 22 }}
           >
             <span>{slide.badge.split(" ")[0]}</span>
-            <span className="text-base font-black">{slide.badge.split(" ").slice(1).join(" ")}</span>
+            <span className="text-base font-black">
+              {slide.badge.split(" ").slice(1).join(" ")}
+            </span>
           </div>
           <Image
             src={slide.image1}
@@ -55,6 +68,7 @@ export default function HeroBanner() {
             width={180}
             height={180}
             className="object-contain drop-shadow-lg"
+            priority
           />
           <Image
             src={slide.image2}
@@ -62,6 +76,7 @@ export default function HeroBanner() {
             width={200}
             height={200}
             className="object-contain drop-shadow-lg"
+            priority
           />
         </div>
       </div>

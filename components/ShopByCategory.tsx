@@ -10,7 +10,8 @@ export default function ShopByCategory() {
   const visible = 4;
 
   const prev = () => setStartIndex((p) => Math.max(0, p - 1));
-  const next = () => setStartIndex((p) => Math.min(shopCategories.length - visible, p + 1));
+  const next = () =>
+    setStartIndex((p) => Math.min(shopCategories.length - visible, p + 1));
 
   const visibleCats = shopCategories.slice(startIndex, startIndex + visible);
 
@@ -38,11 +39,14 @@ export default function ShopByCategory() {
                 src={cat.image}
                 alt={cat.name}
                 fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                <span className="text-white font-bold text-sm drop-shadow">{cat.name}</span>
+                <span className="text-white font-bold text-sm drop-shadow">
+                  {cat.name}
+                </span>
                 <a
                   href={`/category/${cat.slug}`}
                   className="text-[#00b4b4] text-sm font-semibold hover:underline"

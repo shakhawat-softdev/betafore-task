@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: #f5f5f5;
     color: #333;
     margin: 0;
@@ -22,8 +25,17 @@
   .tab-inactive {
     @apply text-gray-600 hover:text-[#00b4b4] transition-colors;
   }
+  /* Image aspect ratio fix */
+  img {
+    height: auto;
+  }
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
