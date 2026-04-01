@@ -6,11 +6,11 @@ import { NewArrivals } from "@/components/home/NewArrivals";
 export default function Home() {
   return (
     <main className="w-full bg-white">
-      <div className="mx-auto w-full max-w-[1400px] px-4 pb-10 sm:px-6 lg:px-8">
+      <div className="site-shell pb-12">
         <Hero />
         <CategoryStrip />
         <NewArrivals />
-        <div className="pt-12 sm:pt-16 lg:pt-24">
+        <div className="pt-12 sm:pt-16 lg:pt-20">
           <BestDeals />
         </div>
       </div>

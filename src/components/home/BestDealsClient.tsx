@@ -21,11 +21,12 @@ export type DealProduct = {
 };
 
 function ArrowIcon() {
-  // eslint-disable-next-line @next/next/no-img-element
   return (
-    <img
+    <Image
       src="/figma/icons/node-0-272.svg"
       alt=""
+      width={44}
+      height={14}
       className="w-[44px] h-[14px]"
     />
   );
@@ -52,7 +53,9 @@ function BestDealCard(p: DealProduct) {
           alt=""
           fill
           sizes={`${p.imageBox.w}px`}
-          className={p.imageFit === "contain" ? "object-contain" : "object-cover"}
+          className={
+            p.imageFit === "contain" ? "object-contain" : "object-cover"
+          }
         />
       </div>
 
@@ -80,13 +83,13 @@ function BestDealsProductsGrid({ products }: { products: DealProduct[] }) {
   const row2 = products.slice(6, 12);
 
   return (
-    <div className="w-[1219px] flex flex-col gap-[25px]">
-      <div className="w-[1219px] h-[287px] flex items-center justify-center gap-[31px]">
+    <div className="flex w-full flex-col gap-[18px] lg:w-[1219px] lg:gap-[25px]">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:h-[287px] lg:items-center lg:justify-center lg:gap-[31px]">
         {row1.map((p) => (
           <BestDealCard key={p.id} {...p} />
         ))}
       </div>
-      <div className="w-[1219px] h-[287px] flex items-center justify-center gap-[31px]">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:h-[287px] lg:items-center lg:justify-center lg:gap-[31px]">
         {row2.map((p) => (
           <BestDealCard key={p.id} {...p} />
         ))}
@@ -132,13 +135,14 @@ export function BestDealsClient({
   }, [active, productsByTab]);
 
   return (
-    <section className="w-[1242px]">
-      <div className="w-[1242px] h-[59px] flex items-center">
-        <div className="w-[380px] h-[35px] font-normal text-[28px] leading-[1.171875em] text-[#00CAD7]">
-          Best Deals
+    <section>
+      <div className="flex flex-col gap-4 lg:h-[59px] lg:flex-row lg:items-center">
+        <div className="h-[35px] w-[380px] text-[26px] leading-[1.171875em] lg:text-[28px]">
+          <span className="text-[#00CAD7]">Best</span>
+          <span className="text-[#1c1c1c]"> Deals</span>
         </div>
 
-        <div className="ml-auto w-[837px] h-[59px] flex items-center gap-[11px]">
+        <div className="flex h-[59px] w-full items-center gap-[11px] overflow-x-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] lg:ml-auto lg:w-[837px]">
           {tabs.map((t) => {
             const isActive = t.label === active;
             return (
@@ -151,7 +155,7 @@ export function BestDealsClient({
               >
                 <div
                   className={[
-                    "h-[35px] font-normal text-[19px] leading-[2.7894736842em] uppercase flex items-center",
+                    "font-roboto flex h-[35px] items-center text-[19px] leading-[2.7894736842em] uppercase",
                     isActive ? "text-[#00CAD7]" : "text-black",
                   ].join(" ")}
                 >
@@ -165,15 +169,14 @@ export function BestDealsClient({
           })}
         </div>
 
-        <div className="ml-[12px]">
+        <div className="ml-[12px] hidden lg:block">
           <ArrowIcon />
         </div>
       </div>
 
-      <div className="mt-[78px] flex justify-center">
+      <div className="mt-[24px] flex justify-center lg:mt-[54px]">
         <BestDealsProductsGrid products={products} />
       </div>
     </section>
   );
 }
-

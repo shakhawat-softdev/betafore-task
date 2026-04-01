@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Acme, Roboto } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/shell/Footer";
 import { Header } from "@/components/shell/Header";
+
+const acme = Acme({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-acme",
+});
+
+const roboto = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
   title: "E-Commerce",
@@ -14,7 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html
+      lang="en"
+      className={`${acme.variable} ${roboto.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col bg-white text-black">
         <Header />
         <div className="flex-1 w-full">{children}</div>

@@ -65,10 +65,10 @@ function ProductCard(p: Product) {
   return (
     <div className="w-[203px] shrink-0 border border-[rgba(20,177,240,0.35)] bg-white">
       <div className="px-[10px] pt-[10px]">
-        <div className="font-normal text-[14px] leading-[1.2260742188em] text-black">
+        <div className="text-[12px] leading-[1.2260742188em] text-black">
           {p.vendor}
         </div>
-        <div className="mt-[4px] font-normal text-[14px] leading-[1.2260742188em] text-[rgba(0,0,0,0.6)]">
+        <div className="mt-[4px] text-[15px] leading-[1.2260742188em] text-[#034E53]">
           {p.title}
         </div>
       </div>
@@ -84,10 +84,10 @@ function ProductCard(p: Product) {
       </div>
 
       <div className="mt-[10px] flex items-center gap-[10px] px-[10px]">
-        <div className="font-normal text-[14px] leading-[1.2260742188em] text-[rgba(0,0,0,0.6)] line-through">
+        <div className="text-[13px] leading-[1.2260742188em] text-[#697475] line-through">
           {p.oldPrice}
         </div>
-        <div className="font-normal text-[14px] leading-[1.2260742188em] text-[#0AAEB9]">
+        <div className="text-[15px] leading-[1.2260742188em] text-[#0AAEB9]">
           {p.price}
         </div>
       </div>
@@ -95,7 +95,7 @@ function ProductCard(p: Product) {
       <div className="px-[10px] pb-[10px] pt-[10px]">
         <AddToCartButton
           productId={p.id}
-          className="w-full h-[33px] bg-[#14B1F0] text-white text-[14px] leading-[1.2260742188em]"
+          className="h-[33px] w-full bg-[#15ADB7] text-[15px] leading-[1.2260742188em] text-white"
         >
           Add to cart
         </AddToCartButton>
@@ -106,17 +106,18 @@ function ProductCard(p: Product) {
 
 export function NewArrivals() {
   return (
-    <section className="w-[1400px]">
-      <div className="pt-[18px]">
-        <div className="w-[1400px] h-[53px] flex items-center justify-center">
-          <div className="font-normal text-[40px] leading-[1.2260742188em] text-[#0E3B3E]">
-            New&nbsp;&nbsp;Arrivals
-          </div>
+    <section>
+      <div className="pt-[22px] lg:pt-[24px]">
+        <div className="flex h-[53px] items-center justify-center">
+          <h2 className="text-[24px] leading-[1.2260742188em] sm:text-[26px] lg:text-[28px]">
+            <span className="text-[#00C7D4]">New</span>
+            <span className="text-[#1C1C1C]">&nbsp; Arrivals</span>
+          </h2>
         </div>
       </div>
 
-      <div className="mt-[18px] flex items-start justify-center">
-        <div className="flex flex-row gap-[18px] w-[1262px] overflow-x-auto px-[6px] [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+      <div className="mt-[9px] flex items-start justify-center lg:mt-[9px]">
+        <div className="flex w-full gap-[18px] overflow-x-auto px-[6px] lg:w-[1219px] lg:gap-[31px] lg:px-0 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
           {products.map((p) => (
             <ProductCard key={p.id} {...p} />
           ))}
@@ -125,4 +126,3 @@ export function NewArrivals() {
     </section>
   );
 }
-
