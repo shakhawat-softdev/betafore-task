@@ -4,13 +4,14 @@ import { Footer, Header, Reveal, SectionNotice } from "@/components";
 import { getProductByIdAction } from "@/app/actions/catalog";
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const productId = Number(params.id);
+  const { id } = await params;
+  const productId = Number(id);
 
   if (!Number.isInteger(productId) || productId <= 0) {
     return (

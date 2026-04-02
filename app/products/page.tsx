@@ -13,15 +13,16 @@ import {
 } from "@/app/actions/catalog";
 
 interface ProductsPageProps {
-  searchParams?: {
+  searchParams: Promise<{
     category?: string;
-  };
+  }>;
 }
 
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
-  const selectedCategory = searchParams?.category;
+  const params = await searchParams;
+  const selectedCategory = params?.category;
 
   const [categoriesResult, productsResult] = await Promise.all([
     getCategoriesAction(),
