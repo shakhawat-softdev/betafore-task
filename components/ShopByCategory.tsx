@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Category } from "@/lib/api-types";
@@ -18,6 +19,27 @@ const categoryCardClasses = [
   "from-fuchsia-500 to-pink-500",
 ];
 
+const figmaCategoryImages = [
+  "/images/figma/shop-cat-electronics.png",
+  "/images/figma/shop-cat-fashion.png",
+  "/images/figma/shop-cat-appliances.png",
+  "/images/figma/shop-cat-babies.png",
+];
+
+const categoryImageByName: Record<string, string> = {
+  electronics: "/images/figma/shop-cat-electronics.png",
+  jewelery: "/images/figma/shop-cat-fashion.png",
+  "men's clothing": "/images/figma/shop-cat-appliances.png",
+  "women's clothing": "/images/figma/shop-cat-babies.png",
+};
+
+function toDisplayName(name: string): string {
+  return name
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export default function ShopByCategory({ categories }: ShopByCategoryProps) {
   const [startIndex, setStartIndex] = useState(0);
   const visible = 4;
@@ -30,7 +52,7 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
 
   if (categories.length === 0) {
     return (
-      <div className="bg-white border-t border-gray-200 py-3">
+      <div className="bg-white py-3">
         <div className="max-w-[1200px] mx-auto px-4">
           <SectionNotice message="Categories are unavailable at the moment." />
         </div>
@@ -39,51 +61,91 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
   }
 
   return (
-    <div className="bg-white border-t border-gray-200 py-1">
-      <div className="max-w-[1200px] mx-auto px-4 flex items-center gap-2">
-        <button
-          onClick={prev}
-          disabled={startIndex === 0}
-          className="flex-shrink-0 border border-gray-300 rounded p-2 hover:bg-gray-100 disabled:opacity-30 transition-colors"
-        >
-          <ChevronLeft size={18} className="text-gray-600" />
-        </button>
+    <section className="relative bg-[linear-gradient(180deg,#F3EDC9_0%,rgba(255,255,255,0)_100%)] py-[2px]">
+      <button
+        onClick={prev}
+        disabled={startIndex === 0}
+        aria-label="Previous categories"
+        className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 h-[66px] w-[66px] items-center justify-center rounded-full border-2 border-black bg-transparent disabled:opacity-30"
+      >
+        <ChevronLeft size={32} className="text-black" strokeWidth={2} />
+      </button>
 
-        <div className="flex-1 grid grid-cols-4 gap-3 py-3">
-          {visibleCats.map((cat, index) => (
-            <div
-              key={cat.id}
-              className={`relative overflow-hidden rounded group bg-gradient-to-br ${
-                categoryCardClasses[
-                  (startIndex + index) % categoryCardClasses.length
-                ]
-              }`}
-              style={{ height: 180 }}
-            >
-              <div className="absolute inset-0 bg-black/15" />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2">
-                <span className="text-white font-bold text-sm md:text-base leading-tight">
-                  {cat.name}
-                </span>
-                <Link
-                  href={`/products?category=${encodeURIComponent(cat.name)}`}
-                  className="text-white text-sm font-semibold underline underline-offset-2"
+      <button
+        onClick={next}
+        disabled={startIndex >= maxStart}
+        aria-label="Next categories"
+        className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 h-[66px] w-[66px] items-center justify-center rounded-full border-2 border-black bg-transparent disabled:opacity-30"
+      >
+        <ChevronRight size={32} className="text-black" strokeWidth={2} />
+      </button>
+
+      <div className="mx-auto flex w-full max-w-[1400px] justify-center px-4">
+        <div className="flex w-full max-w-[1262px] gap-[33px] overflow-hidden p-[15px]">
+          <button
+            onClick={prev}
+            disabled={startIndex === 0}
+            aria-label="Previous categories"
+            className="xl:hidden flex-shrink-0 border border-gray-300 rounded p-2 hover:bg-gray-100 disabled:opacity-30 transition-colors"
+          >
+            <ChevronLeft size={18} className="text-gray-600" />
+          </button>
+
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-[33px]">
+            {visibleCats.map((cat, index) => {
+              const imageSrc =
+                categoryImageByName[cat.name] ??
+                figmaCategoryImages[
+                  (startIndex + index) % figmaCategoryImages.length
+                ];
+              const displayName = toDisplayName(cat.name);
+              return (
+                <div
+                  key={cat.id}
+                  className={`relative h-[199px] w-full overflow-hidden bg-gradient-to-br ${
+                    categoryCardClasses[
+                      (startIndex + index) % categoryCardClasses.length
+                    ]
+                  }`}
                 >
-                  Shop
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+                  {imageSrc && (
+                    <Image
+                      src={imageSrc}
+                      alt={displayName}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 50vw, 272px"
+                    />
+                  )}
 
-        <button
-          onClick={next}
-          disabled={startIndex >= maxStart}
-          className="flex-shrink-0 border border-gray-300 rounded p-2 hover:bg-gray-100 disabled:opacity-30 transition-colors"
-        >
-          <ChevronRight size={18} className="text-gray-600" />
-        </button>
+                  <div className="absolute left-[-9px] bottom-[12px] flex h-[49px] w-[269px] items-center gap-[10px] bg-[rgba(254,249,249,0.95)] px-[15px] shadow-[0_1px_7px_rgba(0,0,0,0.57)]">
+                    <span className="text-[25px] leading-none text-black">
+                      {displayName}
+                    </span>
+                    <Link
+                      href={`/products?category=${encodeURIComponent(cat.name)}`}
+                      className="ml-auto flex h-[38px] w-[96px] items-center justify-center bg-[#0AAEB9] text-[17px] text-white"
+                    >
+                      Shop
+                    </Link>
+                  </div>
+
+                  <div className="absolute left-[-9px] bottom-[60px] h-0 w-0 border-r-[11px] border-r-transparent border-t-[8px] border-t-[#220F0F]" />
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={next}
+            disabled={startIndex >= maxStart}
+            aria-label="Next categories"
+            className="xl:hidden flex-shrink-0 border border-gray-300 rounded p-2 hover:bg-gray-100 disabled:opacity-30 transition-colors"
+          >
+            <ChevronRight size={18} className="text-gray-600" />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
