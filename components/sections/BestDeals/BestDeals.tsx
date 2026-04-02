@@ -39,15 +39,6 @@ export default function BestDeals({
           {/* Scroll arrows + Tabs (right aligned) */}
           <div className="w-full md:ml-auto md:w-auto">
             <div className="flex items-center justify-end gap-2">
-              <div className="hidden items-center gap-1 pb-2 md:flex">
-                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
-                  <ChevronLeft size={14} />
-                </button>
-                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
-                  <ChevronRight size={14} />
-                </button>
-              </div>
-
               <div className="flex flex-wrap items-center justify-end gap-2 md:flex-nowrap md:gap-0">
                 {categories.map((tab) => (
                   <motion.button
@@ -64,6 +55,14 @@ export default function BestDeals({
                     {tab.name}
                   </motion.button>
                 ))}
+              </div>
+              <div className="hidden items-center gap-1 pb-2 md:flex">
+                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
+                  <ChevronLeft size={14} />
+                </button>
+                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
+                  <ChevronRight size={14} />
+                </button>
               </div>
             </div>
           </div>
