@@ -158,10 +158,13 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                     <span className="text-[25px] leading-none text-black">
                       {displayName}
                     </span>
-                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
                       <Link
-                      href={`/products?category=${encodeURIComponent(cat.name)}`}
-                      className="ml-auto flex h-[38px] w-[96px] items-center justify-center bg-[#0AAEB9] text-[17px] text-white"
+                        href={`/products?category=${encodeURIComponent(cat.name)}`}
+                        className="ml-auto flex h-[38px] w-[96px] items-center justify-center bg-[#0AAEB9] text-[17px] text-white"
                       >
                         Shop
                       </Link>

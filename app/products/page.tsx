@@ -44,29 +44,29 @@ export default async function ProductsPage({
         {categoriesResult.ok && (
           <Reveal delay={0.04}>
             <div className="flex flex-wrap gap-2 mb-6">
-            <Link
-              href="/products"
-              className={`px-3 py-1 rounded-full text-sm border ${
-                !selectedCategory
-                  ? "bg-[#00b4b4] text-white border-[#00b4b4]"
-                  : "bg-white text-gray-700 border-gray-300"
-              }`}
-            >
-              All
-            </Link>
-            {categoriesResult.data.map((category) => (
               <Link
-                key={category.id}
-                href={`/products?category=${encodeURIComponent(category.name)}`}
+                href="/products"
                 className={`px-3 py-1 rounded-full text-sm border ${
-                  selectedCategory === category.name
+                  !selectedCategory
                     ? "bg-[#00b4b4] text-white border-[#00b4b4]"
                     : "bg-white text-gray-700 border-gray-300"
                 }`}
               >
-                {category.name}
+                All
               </Link>
-            ))}
+              {categoriesResult.data.map((category) => (
+                <Link
+                  key={category.id}
+                  href={`/products?category=${encodeURIComponent(category.name)}`}
+                  className={`px-3 py-1 rounded-full text-sm border ${
+                    selectedCategory === category.name
+                      ? "bg-[#00b4b4] text-white border-[#00b4b4]"
+                      : "bg-white text-gray-700 border-gray-300"
+                  }`}
+                >
+                  {category.name}
+                </Link>
+              ))}
             </div>
           </Reveal>
         )}

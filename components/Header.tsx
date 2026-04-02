@@ -24,7 +24,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="shrink-0 no-underline"
+            className="shrink-0 no-underline transition-transform duration-200 hover:scale-[1.02]"
             aria-label="WIN store home"
           >
             <Image
@@ -42,7 +42,7 @@ export default function Header() {
             <div className="flex h-[39px] w-full overflow-hidden rounded-[6px] bg-white">
               <button
                 type="button"
-                className="flex h-full w-[157px] items-center justify-between border-r border-[#AEAEAE] px-[17.5px] text-left text-[13px] leading-[16px] text-[#ABA3A3]"
+                className="group flex h-full w-[157px] items-center justify-between border-r border-[#AEAEAE] px-[17.5px] text-left text-[13px] leading-[16px] text-[#ABA3A3] transition-colors duration-200 hover:bg-gray-50"
                 aria-label="All categories"
               >
                 <span>All categories</span>
@@ -52,18 +52,18 @@ export default function Header() {
                   width={24}
                   height={24}
                   aria-hidden="true"
-                  className="h-6 w-6 shrink-0"
+                  className="h-6 w-6 shrink-0 transition-transform duration-200 group-hover:translate-y-[1px]"
                 />
               </button>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search for products"
-                className="h-full flex-1 px-[18px] text-[13px] leading-[16px] text-[#ABA3A3] outline-none placeholder:text-[#ABA3A3]"
+                className="h-full flex-1 px-[18px] text-[13px] leading-[16px] text-[#ABA3A3] outline-none placeholder:text-[#ABA3A3] transition-colors duration-200 focus:text-[#5F5F5F]"
               />
               <button
                 type="button"
-                className="h-full w-[43px] shrink-0 overflow-hidden rounded-r-[6px]"
+                className="h-full w-[43px] shrink-0 overflow-hidden rounded-r-[6px] transition duration-200 hover:brightness-95 active:scale-[0.98]"
                 aria-label="Search"
               >
                 <Image
@@ -88,20 +88,20 @@ export default function Header() {
               <div className="text-[19px] leading-none font-normal text-white">
                 +011 5827918
               </div>
-              <div className="text-[13px] leading-none text-[#00CAD7] cursor-pointer">
+              <button className="text-[13px] leading-none text-[#00CAD7] transition-colors duration-200 hover:text-[#3DE2EC] hover:underline">
                 Sign In
-              </div>
+              </button>
             </div>
 
-            <button className="flex flex-col items-center text-white hover:text-white/90">
+            <button className="flex flex-col items-center text-white transition-all duration-200 hover:-translate-y-0.5 hover:text-white/90">
               <User size={20} />
             </button>
 
-            <button className="flex flex-col items-center text-white hover:text-white/90">
+            <button className="flex flex-col items-center text-white transition-all duration-200 hover:-translate-y-0.5 hover:text-white/90">
               <Heart size={20} />
             </button>
 
-            <button className="relative flex items-center gap-1 text-white hover:text-white/90">
+            <button className="relative flex items-center gap-1 text-white transition-all duration-200 hover:-translate-y-0.5 hover:text-white/90">
               <div className="relative">
                 <ShoppingCart size={20} />
                 <span className="absolute -top-2 -right-2 bg-[#00b4b4] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
@@ -119,7 +119,7 @@ export default function Header() {
         <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 py-3 lg:h-[49px] lg:flex-row lg:items-center lg:justify-between lg:px-[51px] lg:py-0">
           {/* Left nav */}
           <div className="flex w-full items-center gap-3 overflow-x-auto lg:w-auto lg:gap-[36px] lg:overflow-visible lg:p-[5px]">
-            <div className="flex h-[31px] w-[179px] shrink-0 items-center gap-3 rounded-[8px]  px-[7px] py-[7px] text-[#FFFFFF]">
+            <button className="flex h-[31px] w-[179px] shrink-0 items-center gap-3 rounded-[8px] px-[7px] py-[7px] text-[#FFFFFF] transition-colors duration-200 ">
               <Image
                 src="/images/figma/nav-browse-icon.svg"
                 alt=""
@@ -131,14 +131,14 @@ export default function Header() {
               <span className="whitespace-nowrap text-[17px] leading-[22px] text-[#FFFFFF]">
                 Brouse By Category
               </span>
-            </div>
+            </button>
 
             <nav className="flex items-center gap-6 lg:gap-[36px]">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="whitespace-nowrap text-[13px] leading-[16px] text-[#FFFFFF] no-underline transition-colors hover:opacity-80"
+                  className="whitespace-nowrap text-[13px] leading-[16px] text-[#FFFFFF] no-underline transition-colors duration-200 hover:text-[#7DE9F0]"
                 >
                   {link.label}
                 </Link>
@@ -154,7 +154,7 @@ export default function Header() {
               width={149}
               height={22}
               aria-hidden="true"
-              className="h-[22px] w-[149px]"
+              className="h-[22px] w-[149px] transition-opacity duration-200 hover:opacity-80"
             />
           </div>
         </div>

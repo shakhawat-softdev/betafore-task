@@ -46,7 +46,7 @@ export default function Footer() {
             {/* Brand Column */}
             <div className="flex flex-col gap-[14px]">
               {/* Logo */}
-              <div className="mb-3">
+              <div className="mb-3 transition-transform duration-200 hover:scale-[1.02]">
                 <Image
                   src="/images/figma/win-logo.svg"
                   alt="WIN store"
@@ -73,7 +73,7 @@ export default function Footer() {
                   alt="Social links"
                   width={149}
                   height={22}
-                  className="h-[22px] w-[149px]"
+                  className="h-[22px] w-[149px] transition-opacity duration-200 hover:opacity-80"
                 />
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function Footer() {
                     <li key={link}>
                       <Link
                         href="#"
-                        className="text-[13px] leading-[16px] text-white no-underline transition-opacity hover:opacity-80"
+                        className="text-[13px] leading-[16px] text-white no-underline transition-colors duration-200 hover:text-[#7DE9F0]"
                       >
                         {link}
                       </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
             {paymentItems.map((item) => (
               <div
                 key={item.key}
-                className="relative h-[55px] w-[97px] overflow-hidden rounded-[5px] bg-white"
+                className="relative h-[55px] w-[97px] overflow-hidden rounded-[5px] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_6px_14px_rgba(0,0,0,0.35)]"
                 aria-label={item.key}
                 title={item.key}
               >
