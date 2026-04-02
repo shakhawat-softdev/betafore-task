@@ -53,6 +53,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     src={result.data.image}
                     alt={result.data.title}
                     fill
+                    loading="eager"
+                    quality={85}
                     className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority

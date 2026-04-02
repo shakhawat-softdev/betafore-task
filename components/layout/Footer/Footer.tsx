@@ -22,6 +22,8 @@ export default function Footer() {
                   alt="WIN store"
                   width={133}
                   height={48}
+                  quality={95}
+                  priority
                 />
               </div>
 
@@ -43,6 +45,7 @@ export default function Footer() {
                   alt="Social links"
                   width={149}
                   height={22}
+                  quality={95}
                   className="h-[22px] w-[149px] transition-opacity duration-200 hover:opacity-80"
                 />
               </div>
@@ -84,6 +87,8 @@ export default function Footer() {
                   alt={method.name}
                   width={method.width}
                   height={method.height}
+                  quality={85}
+                  loading="lazy"
                   className="h-full w-full object-contain"
                 />
               </div>

@@ -32,6 +32,7 @@ export default function Header() {
               width={135}
               height={48}
               priority
+              quality={95}
               className="h-auto w-[132.5px] xl:w-[132.5px]"
             />
           </Link>
@@ -51,6 +52,7 @@ export default function Header() {
                   width={24}
                   height={24}
                   aria-hidden="true"
+                  quality={95}
                   className="h-6 w-6 shrink-0 transition-transform duration-200 group-hover:translate-y-[1px]"
                 />
               </button>
@@ -71,6 +73,7 @@ export default function Header() {
                   width={43}
                   height={38}
                   aria-hidden="true"
+                  quality={95}
                   className="h-full w-full"
                 />
               </button>

@@ -23,6 +23,7 @@ export default function HeroBanner() {
           alt="Hero background"
           fill
           priority
+          quality={88}
           className="object-cover"
           sizes="100vw"
         />
@@ -31,6 +32,7 @@ export default function HeroBanner() {
           alt="Hero overlay"
           fill
           priority
+          quality={85}
           className="-top-[13px] object-cover"
           sizes="100vw"
         />

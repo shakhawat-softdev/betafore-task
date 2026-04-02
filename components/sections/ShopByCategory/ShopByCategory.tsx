@@ -163,6 +163,8 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                       src={imageSrc}
                       alt={displayName}
                       fill
+                      loading="lazy"
+                      quality={82}
                       className="object-cover"
                       sizes="(max-width: 1024px) 50vw, 272px"
                     />

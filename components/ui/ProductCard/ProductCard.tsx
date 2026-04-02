@@ -49,6 +49,8 @@ export default function ProductCard({ product }: Props) {
             src={product.image}
             alt={product.title}
             fill
+            loading="lazy"
+            quality={80}
             className="object-contain"
             sizes="200px"
           />
