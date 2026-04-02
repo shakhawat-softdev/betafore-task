@@ -6,9 +6,9 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { OptimizedImage } from "@/components/ui";
 import { type Product } from "@/lib/types";
 
 interface Props {
@@ -45,7 +45,7 @@ export default function ProductCard({ product }: Props) {
         </div>
 
         <div className="relative h-36 mx-3 my-2">
-          <Image
+          <OptimizedImage
             src={product.image}
             alt={product.title}
             fill

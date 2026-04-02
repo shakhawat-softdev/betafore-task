@@ -6,11 +6,10 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { type Category } from "@/lib/types";
-import { SectionNotice } from "@/components/ui";
+import { OptimizedImage, SectionNotice } from "@/components/ui";
 
 interface ShopByCategoryProps {
   categories: Category[];
@@ -159,7 +158,7 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                   }`}
                 >
                   {imageSrc && (
-                    <Image
+                    <OptimizedImage
                       src={imageSrc}
                       alt={displayName}
                       fill

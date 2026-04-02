@@ -1,6 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Footer, Header, Reveal, SectionNotice } from "@/components";
+import {
+  Footer,
+  Header,
+  OptimizedImage,
+  Reveal,
+  SectionNotice,
+} from "@/components";
 import { getProductByIdAction } from "@/app/actions/catalog";
 
 interface ProductPageProps {
@@ -49,7 +54,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <section className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div className="relative h-[360px] w-full rounded bg-white">
-                  <Image
+                  <OptimizedImage
                     src={result.data.image}
                     alt={result.data.title}
                     fill

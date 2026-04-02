@@ -5,8 +5,8 @@
  * Large hero section with headline, body, CTA, and discount badge
  */
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { OptimizedImage } from "@/components/ui";
 
 export default function HeroBanner() {
   return (
@@ -18,7 +18,7 @@ export default function HeroBanner() {
         className="relative mx-auto w-full max-w-[1400px]"
         style={{ minHeight: 318 }}
       >
-        <Image
+        <OptimizedImage
           src="/images/figma/hero-bg-base.png"
           alt="Hero background"
           fill
@@ -27,7 +27,7 @@ export default function HeroBanner() {
           className="object-cover"
           sizes="100vw"
         />
-        <Image
+        <OptimizedImage
           src="/images/figma/hero-bg-overlay.png"
           alt="Hero overlay"
           fill
