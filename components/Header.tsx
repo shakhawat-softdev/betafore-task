@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Search,
@@ -33,14 +34,14 @@ export default function Header() {
       <div className="bg-[#222831] text-white py-2 px-4">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-baseline gap-0.5 no-underline">
-            <span
-              className="text-white font-extrabold text-2xl leading-none"
-              style={{ fontFamily: "Arial Black, sans-serif" }}
-            >
-              WIN
-            </span>
-            <span className="text-white text-sm font-light">store</span>
+          <Link href="/" className="no-underline" aria-label="WIN store home">
+            <Image
+              src="/images/figma/win-logo.svg"
+              alt="WIN store"
+              width={135}
+              height={48}
+              priority
+            />
           </Link>
 
           {/* Search */}
@@ -69,7 +70,9 @@ export default function Header() {
                 <Phone size={11} /> Call Us Now
               </div>
               <div className="font-semibold text-sm">+011 5827918</div>
-              <div className="text-xs text-[#00b4b4] cursor-pointer">Sign In</div>
+              <div className="text-xs text-[#00b4b4] cursor-pointer">
+                Sign In
+              </div>
             </div>
 
             <button className="flex flex-col items-center text-gray-300 hover:text-white">

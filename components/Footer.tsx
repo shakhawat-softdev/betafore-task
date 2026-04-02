@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, Instagram, Phone, Mail } from "lucide-react";
+import Image from "next/image";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Phone,
+  Mail,
+} from "lucide-react";
 import { footerLinks } from "@/lib/data";
 
 export default function Footer() {
@@ -10,9 +18,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             {/* Logo */}
-            <div className="flex items-baseline gap-0.5 mb-3">
-              <span className="text-white font-extrabold text-2xl leading-none">WIN</span>
-              <span className="text-white text-sm font-light">store</span>
+            <div className="mb-3">
+              <Image
+                src="/images/figma/win-logo.svg"
+                alt="WIN store"
+                width={135}
+                height={48}
+              />
             </div>
 
             <p className="text-[#00b4b4] font-semibold text-sm mb-3">
@@ -24,7 +36,9 @@ export default function Footer() {
             </div>
             <div className="text-sm mb-4 ml-5">0317 1777015.</div>
 
-            <p className="text-[#00b4b4] font-semibold text-sm mb-1">Contact info</p>
+            <p className="text-[#00b4b4] font-semibold text-sm mb-1">
+              Contact info
+            </p>
             <div className="flex items-center gap-2 text-sm mb-5">
               <Mail size={13} className="text-gray-400" />
               <span>info@winstore.pk</span>
@@ -47,7 +61,9 @@ export default function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-[#00b4b4] font-bold text-base mb-4">{title}</h3>
+              <h3 className="text-[#00b4b4] font-bold text-base mb-4">
+                {title}
+              </h3>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
