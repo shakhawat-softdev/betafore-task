@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Product } from "@/lib/api-types";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 export default function ProductCard({ product }: Props) {
   const [added, setAdded] = useState(false);
   const originalPrice = Number((product.price * 1.15).toFixed(2));
+  const productHref = `/products/${product.id}`;
 
   const handleAdd = () => {
     setAdded(true);
@@ -19,37 +21,39 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div className="bg-white border border-gray-200 rounded flex flex-col hover:shadow-md transition-shadow duration-200">
-      <div className="px-3 pt-3 pb-1">
-        <p className="text-xs text-gray-500 truncate uppercase tracking-wide">
-          {product.category}
-        </p>
-        <p className="text-sm font-semibold text-gray-800 truncate leading-snug">
-          {product.title}
-        </p>
-      </div>
+      <Link href={productHref} className="block">
+        <div className="px-3 pt-3 pb-1">
+          <p className="text-xs text-gray-500 truncate uppercase tracking-wide">
+            {product.category}
+          </p>
+          <p className="text-sm font-semibold text-gray-800 truncate leading-snug hover:text-[#00b4b4]">
+            {product.title}
+          </p>
+        </div>
 
-      <div className="relative h-36 mx-3 my-2">
-        <Image
-          src={product.image}
-          alt={product.title}
-          fill
-          className="object-contain"
-          sizes="200px"
-        />
-      </div>
+        <div className="relative h-36 mx-3 my-2">
+          <Image
+            src={product.image}
+            alt={product.title}
+            fill
+            className="object-contain"
+            sizes="200px"
+          />
+        </div>
 
-      <div className="px-3 pb-2 flex items-center gap-2">
-        <span className="text-xs text-gray-400 line-through">
-          ${originalPrice.toLocaleString()}
-        </span>
-        <span className="text-sm font-bold text-[#00b4b4]">
-          ${product.price.toLocaleString()}
-        </span>
-      </div>
+        <div className="px-3 pb-2 flex items-center gap-2">
+          <span className="text-xs text-gray-400 line-through">
+            ${originalPrice.toLocaleString()}
+          </span>
+          <span className="text-sm font-bold text-[#00b4b4]">
+            ${product.price.toLocaleString()}
+          </span>
+        </div>
 
-      <div className="px-3 pb-2 text-xs text-gray-500">
-        Rating {product.rating.rate} ({product.rating.count})
-      </div>
+        <div className="px-3 pb-2 text-xs text-gray-500">
+          Rating {product.rating.rate} ({product.rating.count})
+        </div>
+      </Link>
 
       <div className="px-3 pb-3">
         <button
