@@ -120,7 +120,7 @@ export default function Header() {
       <div className="bg-[#0E3B3E] text-white shadow-[0px_4px_9px_0px_rgba(0,0,0,0.39)]">
         <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 py-3 lg:h-[49px] lg:flex-row lg:items-center lg:justify-between lg:px-[51px] lg:py-0">
           {/* Left nav */}
-          <div className="flex w-full items-center gap-3 overflow-x-auto lg:w-auto lg:gap-[36px] lg:overflow-visible lg:p-[5px]">
+          <div className="flex w-full items-center gap-3 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden lg:w-auto lg:gap-[36px] lg:overflow-visible lg:p-[5px]">
             <button className="flex h-[31px] w-[179px] shrink-0 items-center gap-3 rounded-[8px] px-[7px] py-[7px] text-[#FFFFFF] transition-colors duration-200 ">
               <Image
                 src="/images/figma/nav-browse-icon.svg"
@@ -149,7 +149,7 @@ export default function Header() {
           </div>
 
           {/* Right icons */}
-          <div className="flex shrink-0 items-center justify-end lg:w-[149px] lg:pr-0">
+          <div className="hidden shrink-0 items-center justify-end lg:flex lg:w-[149px] lg:pr-0">
             <Image
               src="/images/figma/nav-right-icon.svg"
               alt=""
