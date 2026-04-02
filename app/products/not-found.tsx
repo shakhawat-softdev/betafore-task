@@ -22,7 +22,8 @@ export default function ProductNotFound() {
               Product Not Found
             </p>
             <p className="text-lg text-gray-600">
-              The product you&apos;re looking for doesn&apos;t exist or has been removed.
+              The product you&apos;re looking for doesn&apos;t exist or has been
+              removed.
             </p>
           </div>
 

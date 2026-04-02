@@ -89,7 +89,10 @@ export default function Error({ error, reset }: ErrorProps) {
                 Browse Products
               </Link>
               <span className="text-gray-300">•</span>
-              <a href="mailto:info@winstore.pk" className="text-sm text-[#00b4b4] hover:underline">
+              <a
+                href="mailto:info@winstore.pk"
+                className="text-sm text-[#00b4b4] hover:underline"
+              >
                 Contact Support
               </a>
             </div>

@@ -8,10 +8,7 @@ interface GlobalErrorProps {
   reset: () => void;
 }
 
-export default function GlobalError({
-  error,
-  reset,
-}: GlobalErrorProps) {
+export default function GlobalError({ error, reset }: GlobalErrorProps) {
   useEffect(() => {
     // Log error to external error reporting service
     console.error("Global Error:", error);

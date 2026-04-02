@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import {
   Footer,
   Header,
   ProductCard,
   Reveal,
   SectionNotice,
+  ProductGridSkeleton,
 } from "@/components";
 import Link from "next/link";
 import {
@@ -79,13 +81,15 @@ export default async function ProductsPage({
         ) : productsResult.data.length === 0 ? (
           <SectionNotice message="No products found." />
         ) : (
-          <Reveal delay={0.08}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-              {productsResult.data.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </Reveal>
+          <Suspense fallback={<ProductGridSkeleton count={24} />}>
+            <Reveal delay={0.08}>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                {productsResult.data.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            </Reveal>
+          </Suspense>
         )}
       </main>
       <Footer />

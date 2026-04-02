@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {
   BestDeals,
   Footer,
@@ -7,6 +8,9 @@ import {
   Reveal,
   SectionNotice,
   ShopByCategory,
+  CategoryGridSkeleton,
+  ProductGridSkeleton,
+  SectionSkeleton,
 } from "@/components";
 import { getHomePageDataAction } from "@/app/actions/catalog";
 
@@ -26,21 +30,52 @@ export default async function HomePage() {
           </div>
         ) : (
           <>
-            <Reveal delay={0.05}>
-              <ShopByCategory categories={homeDataResult.data.categories} />
-            </Reveal>
+            <Suspense
+              fallback={
+                <section className="relative bg-white py-8">
+                  <div className="mx-auto w-full max-w-[1400px] px-4">
+                    <div className="mb-5">
+                      <div className="h-8 bg-gray-200 rounded w-48 animate-pulse" />
+                    </div>
+                    <CategoryGridSkeleton count={4} />
+                  </div>
+                </section>
+              }
+            >
+              <Reveal delay={0.05}>
+                <ShopByCategory categories={homeDataResult.data.categories} />
+              </Reveal>
+            </Suspense>
+
             <div className="bg-[#f9f9f9]">
-              <Reveal delay={0.08}>
-                <NewArrivals
-                  products={homeDataResult.data.allProducts.slice(0, 12)}
-                />
-              </Reveal>
-              <Reveal delay={0.12}>
-                <BestDeals
-                  categories={homeDataResult.data.categories}
-                  categoryProducts={homeDataResult.data.categoryProducts}
-                />
-              </Reveal>
+              <Suspense
+                fallback={
+                  <SectionSkeleton title={true}>
+                    <ProductGridSkeleton count={12} />
+                  </SectionSkeleton>
+                }
+              >
+                <Reveal delay={0.08}>
+                  <NewArrivals
+                    products={homeDataResult.data.allProducts.slice(0, 12)}
+                  />
+                </Reveal>
+              </Suspense>
+
+              <Suspense
+                fallback={
+                  <SectionSkeleton title={true}>
+                    <ProductGridSkeleton count={6} />
+                  </SectionSkeleton>
+                }
+              >
+                <Reveal delay={0.12}>
+                  <BestDeals
+                    categories={homeDataResult.data.categories}
+                    categoryProducts={homeDataResult.data.categoryProducts}
+                  />
+                </Reveal>
+              </Suspense>
             </div>
           </>
         )}
