@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Category } from "@/lib/api-types";
 import SectionNotice from "./SectionNotice";
 
@@ -32,6 +31,37 @@ const categoryImageByName: Record<string, string> = {
   "men's clothing": "/images/figma/shop-cat-appliances.png",
   "women's clothing": "/images/figma/shop-cat-babies.png",
 };
+
+const figmaArrowButtonClass =
+  "h-[66px] w-[66px] items-center justify-center bg-transparent disabled:opacity-30";
+
+function FigmaLeftArrowIcon() {
+  return (
+    <svg width="17" height="33" viewBox="0 0 17 33" fill="none" aria-hidden>
+      <path
+        d="M16.5 33L0 16.5L16.5 0"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FigmaRightArrowIcon() {
+  return (
+    <svg width="17" height="33" viewBox="0 0 17 33" fill="none" aria-hidden>
+      <path
+        d="M0.5 33L17 16.5L0.5 0"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 function toDisplayName(name: string): string {
   return name
@@ -66,18 +96,18 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
         onClick={prev}
         disabled={startIndex === 0}
         aria-label="Previous categories"
-        className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 h-[66px] w-[66px] items-center justify-center rounded-full border-2 border-black bg-transparent disabled:opacity-30"
+        className={`hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 ${figmaArrowButtonClass}`}
       >
-        <ChevronLeft size={32} className="text-black" strokeWidth={2} />
+        <FigmaLeftArrowIcon />
       </button>
 
       <button
         onClick={next}
         disabled={startIndex >= maxStart}
         aria-label="Next categories"
-        className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 h-[66px] w-[66px] items-center justify-center rounded-full border-2 border-black bg-transparent disabled:opacity-30"
+        className={`hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 ${figmaArrowButtonClass}`}
       >
-        <ChevronRight size={32} className="text-black" strokeWidth={2} />
+        <FigmaRightArrowIcon />
       </button>
 
       <div className="mx-auto flex w-full max-w-[1400px] justify-center px-4">
@@ -86,9 +116,9 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
             onClick={prev}
             disabled={startIndex === 0}
             aria-label="Previous categories"
-            className="xl:hidden flex-shrink-0 border border-gray-300 rounded p-2 hover:bg-gray-100 disabled:opacity-30 transition-colors"
+            className={`xl:hidden flex flex-shrink-0 ${figmaArrowButtonClass}`}
           >
-            <ChevronLeft size={18} className="text-gray-600" />
+            <FigmaLeftArrowIcon />
           </button>
 
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-[33px]">
@@ -140,9 +170,9 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
             onClick={next}
             disabled={startIndex >= maxStart}
             aria-label="Next categories"
-            className="xl:hidden flex-shrink-0 border border-gray-300 rounded p-2 hover:bg-gray-100 disabled:opacity-30 transition-colors"
+            className={`xl:hidden flex flex-shrink-0 ${figmaArrowButtonClass}`}
           >
-            <ChevronRight size={18} className="text-gray-600" />
+            <FigmaRightArrowIcon />
           </button>
         </div>
       </div>
