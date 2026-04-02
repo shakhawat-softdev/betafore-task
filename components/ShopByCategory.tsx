@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Category } from "@/lib/api-types";
 import SectionNotice from "./SectionNotice";
 
@@ -130,8 +131,13 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                 ];
               const displayName = toDisplayName(cat.name);
               return (
-                <div
+                <motion.div
                   key={cat.id}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.35, delay: index * 0.05 }}
+                  whileHover={{ y: -4, scale: 1.01 }}
                   className={`relative h-[199px] w-full overflow-hidden bg-gradient-to-br ${
                     categoryCardClasses[
                       (startIndex + index) % categoryCardClasses.length
@@ -152,16 +158,18 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                     <span className="text-[25px] leading-none text-black">
                       {displayName}
                     </span>
-                    <Link
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+                      <Link
                       href={`/products?category=${encodeURIComponent(cat.name)}`}
                       className="ml-auto flex h-[38px] w-[96px] items-center justify-center bg-[#0AAEB9] text-[17px] text-white"
-                    >
-                      Shop
-                    </Link>
+                      >
+                        Shop
+                      </Link>
+                    </motion.div>
                   </div>
 
                   <div className="absolute left-[-9px] bottom-[60px] h-0 w-0 border-r-[11px] border-r-transparent border-t-[8px] border-t-[#220F0F]" />
-                </div>
+                </motion.div>
               );
             })}
           </div>

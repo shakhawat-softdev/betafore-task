@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { Category, Product } from "@/lib/api-types";
 import SectionNotice from "./SectionNotice";
@@ -32,9 +33,11 @@ export default function BestDeals({
 
         <div className="flex items-center gap-0 flex-1">
           {categories.map((tab) => (
-            <button
+            <motion.button
               key={tab.id}
               onClick={() => setActiveTab(tab.name)}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
               className={`px-4 py-3 text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
                 activeTab === tab.name
                   ? "text-[#00b4b4] border-b-2 border-[#00b4b4]"
@@ -42,7 +45,7 @@ export default function BestDeals({
               }`}
             >
               {tab.name}
-            </button>
+            </motion.button>
           ))}
         </div>
 

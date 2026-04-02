@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function HeroBanner() {
   return (
@@ -31,7 +32,11 @@ export default function HeroBanner() {
 
         <div className="relative z-10 px-4 py-6 md:absolute md:left-[61px] md:top-[39px] md:w-[1198px] md:px-0 md:py-0">
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-[538px]">
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45 }}
               className="w-full md:h-[240px] md:w-[490px]"
               style={{ padding: 24 }}
             >
@@ -55,7 +60,9 @@ export default function HeroBanner() {
                 there. I am not a product of my circumstances. I am a product of
                 my decisions.
               </p>
-              <button
+              <motion.button
+                whileHover={{ y: -2, scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 className="h-10 w-[152px] rounded-[5px] bg-[#14B1F0] text-center text-[15px] leading-[1.47] tracking-[0.013em] text-white transition-colors hover:bg-[#0da3df]"
                 style={{
                   fontFamily: "Century Gothic, sans-serif",
@@ -63,10 +70,17 @@ export default function HeroBanner() {
                 }}
               >
                 View More
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
-            <div className="flex h-[159px] w-[165px] items-center justify-center rounded-full bg-gradient-to-r from-[#FDC830] to-[#F37335]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.08 }}
+              whileHover={{ scale: 1.04 }}
+              className="flex h-[159px] w-[165px] items-center justify-center rounded-full bg-gradient-to-r from-[#FDC830] to-[#F37335]"
+            >
               <p
                 className="text-center text-[47px] leading-[1.23] text-white"
                 style={{
@@ -78,7 +92,7 @@ export default function HeroBanner() {
                 <br />
                 Off
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

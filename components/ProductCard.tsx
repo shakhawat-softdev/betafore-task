@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Product } from "@/lib/api-types";
 
 interface Props {
@@ -20,7 +21,14 @@ export default function ProductCard({ product }: Props) {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded flex flex-col hover:shadow-md transition-shadow duration-200">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.35 }}
+      whileHover={{ y: -6, scale: 1.01 }}
+      className="bg-white border border-gray-200 rounded flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-200"
+    >
       <Link href={productHref} className="block">
         <div className="px-3 pt-3 pb-1">
           <p className="text-xs text-gray-500 truncate uppercase tracking-wide">
@@ -56,8 +64,10 @@ export default function ProductCard({ product }: Props) {
       </Link>
 
       <div className="px-3 pb-3">
-        <button
+        <motion.button
           onClick={handleAdd}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
           className={`w-full py-2 rounded text-sm font-semibold transition-colors ${
             added
               ? "bg-green-500 text-white"
@@ -65,8 +75,8 @@ export default function ProductCard({ product }: Props) {
           }`}
         >
           {added ? "Added!" : "Add to cart"}
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 }

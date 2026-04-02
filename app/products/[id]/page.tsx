@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionNotice from "@/components/SectionNotice";
+import Reveal from "@/components/animations/Reveal";
 import { getProductByIdAction } from "@/app/actions/catalog";
 
 interface ProductPageProps {
@@ -32,56 +33,60 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="min-h-screen bg-[#f9f9f9]">
       <Header />
       <main className="max-w-[1200px] mx-auto px-4 py-8">
-        <Link
-          href="/products"
-          className="text-sm font-semibold text-[#00b4b4] hover:underline"
-        >
-          Back to products
-        </Link>
+        <Reveal y={10}>
+          <Link
+            href="/products"
+            className="text-sm font-semibold text-[#00b4b4] hover:underline"
+          >
+            Back to products
+          </Link>
+        </Reveal>
 
         {!result.ok ? (
           <div className="mt-4">
             <SectionNotice message={result.error} />
           </div>
         ) : (
-          <section className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="relative h-[360px] w-full rounded bg-white">
-                <Image
-                  src={result.data.image}
-                  alt={result.data.title}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-              </div>
-
-              <div>
-                <p className="mb-2 text-sm uppercase tracking-wide text-gray-500">
-                  {result.data.category}
-                </p>
-                <h1 className="text-2xl font-extrabold text-gray-900">
-                  {result.data.title}
-                </h1>
-
-                <div className="mt-4 flex items-center gap-3">
-                  <span className="text-3xl font-extrabold text-[#00b4b4]">
-                    ${result.data.price.toLocaleString()}
-                  </span>
+          <Reveal delay={0.05}>
+            <section className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div className="relative h-[360px] w-full rounded bg-white">
+                  <Image
+                    src={result.data.image}
+                    alt={result.data.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
 
-                <p className="mt-3 text-sm text-gray-600">
-                  Rating {result.data.rating.rate} ({result.data.rating.count}{" "}
-                  reviews)
-                </p>
+                <div>
+                  <p className="mb-2 text-sm uppercase tracking-wide text-gray-500">
+                    {result.data.category}
+                  </p>
+                  <h1 className="text-2xl font-extrabold text-gray-900">
+                    {result.data.title}
+                  </h1>
 
-                <p className="mt-6 leading-7 text-gray-700">
-                  {result.data.description}
-                </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <span className="text-3xl font-extrabold text-[#00b4b4]">
+                      ${result.data.price.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <p className="mt-3 text-sm text-gray-600">
+                    Rating {result.data.rating.rate} ({result.data.rating.count}{" "}
+                    reviews)
+                  </p>
+
+                  <p className="mt-6 leading-7 text-gray-700">
+                    {result.data.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </Reveal>
         )}
       </main>
       <Footer />

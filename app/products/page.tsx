@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 import SectionNotice from "@/components/SectionNotice";
+import Reveal from "@/components/animations/Reveal";
 import {
   getAllProductsAction,
   getCategoriesAction,
@@ -31,15 +32,18 @@ export default async function ProductsPage({
     <div className="min-h-screen bg-[#f9f9f9]">
       <Header />
       <main className="max-w-[1200px] mx-auto px-4 py-8">
-        <h1 className="text-2xl font-extrabold text-gray-900 mb-6">
-          <span className="text-[#00b4b4]">
-            {selectedCategory ? selectedCategory : "All"}
-          </span>{" "}
-          Products
-        </h1>
+        <Reveal y={14}>
+          <h1 className="text-2xl font-extrabold text-gray-900 mb-6">
+            <span className="text-[#00b4b4]">
+              {selectedCategory ? selectedCategory : "All"}
+            </span>{" "}
+            Products
+          </h1>
+        </Reveal>
 
         {categoriesResult.ok && (
-          <div className="flex flex-wrap gap-2 mb-6">
+          <Reveal delay={0.04}>
+            <div className="flex flex-wrap gap-2 mb-6">
             <Link
               href="/products"
               className={`px-3 py-1 rounded-full text-sm border ${
@@ -63,7 +67,8 @@ export default async function ProductsPage({
                 {category.name}
               </Link>
             ))}
-          </div>
+            </div>
+          </Reveal>
         )}
 
         {!productsResult.ok ? (
@@ -71,11 +76,13 @@ export default async function ProductsPage({
         ) : productsResult.data.length === 0 ? (
           <SectionNotice message="No products found." />
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {productsResult.data.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <Reveal delay={0.08}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              {productsResult.data.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </Reveal>
         )}
       </main>
       <Footer />
