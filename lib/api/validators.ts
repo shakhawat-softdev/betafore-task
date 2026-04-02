@@ -1,4 +1,9 @@
-import { ApiEnvelope, Category, Product, ProductRating } from "@/lib/api-types";
+/**
+ * API response validators using type guards
+ * Ensures API responses conform to expected types
+ */
+
+import { ApiEnvelope, Category, Product, ProductRating } from "@/lib/types";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -36,6 +41,9 @@ function isCategory(value: unknown): value is Category {
   return typeof value.id === "number" && typeof value.name === "string";
 }
 
+/**
+ * Type guard for categories API envelope
+ */
 export function isCategoriesEnvelope(
   value: unknown,
 ): value is ApiEnvelope<Category[]> {
@@ -51,6 +59,9 @@ export function isCategoriesEnvelope(
   );
 }
 
+/**
+ * Type guard for products array API envelope
+ */
 export function isProductsEnvelope(
   value: unknown,
 ): value is ApiEnvelope<Product[]> {
@@ -66,6 +77,9 @@ export function isProductsEnvelope(
   );
 }
 
+/**
+ * Type guard for single product API envelope
+ */
 export function isProductEnvelope(
   value: unknown,
 ): value is ApiEnvelope<Product> {

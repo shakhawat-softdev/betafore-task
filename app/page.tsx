@@ -1,11 +1,13 @@
-import Header from "@/components/Header";
-import HeroBanner from "@/components/HeroBanner";
-import ShopByCategory from "@/components/ShopByCategory";
-import NewArrivals from "@/components/NewArrivals";
-import BestDeals from "@/components/BestDeals";
-import Footer from "@/components/Footer";
-import SectionNotice from "@/components/SectionNotice";
-import Reveal from "@/components/animations/Reveal";
+import {
+  BestDeals,
+  Footer,
+  Header,
+  HeroBanner,
+  NewArrivals,
+  Reveal,
+  SectionNotice,
+  ShopByCategory,
+} from "@/components";
 import { getHomePageDataAction } from "@/app/actions/catalog";
 
 export default async function HomePage() {

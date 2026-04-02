@@ -1,11 +1,16 @@
 "use client";
 
+/**
+ * ShopByCategory Component
+ * Carousel of category cards with shop links
+ */
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Category } from "@/lib/api-types";
-import SectionNotice from "./SectionNotice";
+import { type Category } from "@/lib/types";
+import { SectionNotice } from "@/components/ui";
 
 interface ShopByCategoryProps {
   categories: Category[];
@@ -36,6 +41,9 @@ const categoryImageByName: Record<string, string> = {
 const figmaArrowButtonClass =
   "h-[66px] w-[66px] items-center justify-center bg-transparent disabled:opacity-30";
 
+/**
+ * Left arrow SVG icon
+ */
 function FigmaLeftArrowIcon() {
   return (
     <svg width="17" height="33" viewBox="0 0 17 33" fill="none" aria-hidden>
@@ -50,6 +58,9 @@ function FigmaLeftArrowIcon() {
   );
 }
 
+/**
+ * Right arrow SVG icon
+ */
 function FigmaRightArrowIcon() {
   return (
     <svg width="17" height="33" viewBox="0 0 17 33" fill="none" aria-hidden>
@@ -64,6 +75,9 @@ function FigmaRightArrowIcon() {
   );
 }
 
+/**
+ * Convert category name to display format with capitalization
+ */
 function toDisplayName(name: string): string {
   return name
     .split(" ")

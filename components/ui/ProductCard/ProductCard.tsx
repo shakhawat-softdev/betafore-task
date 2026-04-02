@@ -1,10 +1,15 @@
 "use client";
 
+/**
+ * ProductCard Component
+ * Displays a single product with image, price, rating, and add to cart action
+ */
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Product } from "@/lib/api-types";
+import { type Product } from "@/lib/types";
 
 interface Props {
   product: Product;

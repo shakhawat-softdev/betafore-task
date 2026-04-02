@@ -1,3 +1,8 @@
+/**
+ * SectionNotice Component
+ * Displays informational messages or error states
+ */
+
 interface SectionNoticeProps {
   message: string;
 }

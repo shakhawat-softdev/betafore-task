@@ -1,4 +1,20 @@
-export const heroSlides = [
+/**
+ * Hero banner slide data
+ */
+
+export interface HeroSlide {
+  id: number;
+  headline1: string;
+  headline2: string;
+  body: string;
+  cta: string;
+  badge: string;
+  bg: string;
+  image1: string;
+  image2: string;
+}
+
+export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 1,
     headline1: "Shop Computer",
@@ -39,30 +55,3 @@ export const heroSlides = [
       "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=220&q=80",
   },
 ];
-
-export const footerLinks = {
-  Trending: [
-    "Installments",
-    "Electronics",
-    "Grocery",
-    "Health & Beauty",
-    "Home Appliances",
-    "Mobile Accessories",
-  ],
-  Information: [
-    "About Us",
-    "Contact Us",
-    "FAQs",
-    "Shipping & Return",
-    "Privacy policy",
-    "Terms & Conditions",
-  ],
-  "Customer Care": [
-    "My Account",
-    "Track Your Order",
-    "Recently Viewed",
-    "Wishlist",
-    "Compare",
-    "Become a Vendor",
-  ],
-};

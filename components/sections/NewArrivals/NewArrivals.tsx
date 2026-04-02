@@ -1,7 +1,11 @@
-import ProductCard from "./ProductCard";
+/**
+ * NewArrivals Component
+ * Displays latest products in a grid layout
+ */
+
 import Link from "next/link";
-import { Product } from "@/lib/api-types";
-import SectionNotice from "./SectionNotice";
+import { ProductCard, SectionNotice } from "@/components/ui";
+import { type Product } from "@/lib/types";
 
 interface NewArrivalsProps {
   products: Product[];

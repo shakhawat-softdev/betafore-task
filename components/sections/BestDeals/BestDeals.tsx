@@ -1,11 +1,15 @@
 "use client";
 
+/**
+ * BestDeals Component
+ * Tabbed section for category-specific product deals
+ */
+
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import ProductCard from "./ProductCard";
-import { Category, Product } from "@/lib/api-types";
-import SectionNotice from "./SectionNotice";
+import { ProductCard, SectionNotice } from "@/components/ui";
+import { type Category, type Product } from "@/lib/types";
 
 interface BestDealsProps {
   categories: Category[];

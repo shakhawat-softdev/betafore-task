@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import SectionNotice from "@/components/SectionNotice";
-import Reveal from "@/components/animations/Reveal";
+import { Footer, Header, Reveal, SectionNotice } from "@/components";
 import { getProductByIdAction } from "@/app/actions/catalog";
 
 interface ProductPageProps {

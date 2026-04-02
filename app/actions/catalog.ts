@@ -1,11 +1,11 @@
 "use server";
 
-import { ActionResult, Category, Product } from "@/lib/api-types";
+import { ActionResult, Category, Product } from "@/lib/types";
 import {
   isCategoriesEnvelope,
   isProductEnvelope,
   isProductsEnvelope,
-} from "@/lib/api-validators";
+} from "@/lib/api/validators";
 import { API_BASE_URL } from "@/lib/env";
 
 async function fetchAndValidate<T>(params: {

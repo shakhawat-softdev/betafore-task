@@ -1,43 +1,13 @@
+/**
+ * Footer Component
+ * Contains brand info, links, payment methods, and copyright
+ */
+
 import Link from "next/link";
 import Image from "next/image";
-import { footerLinks } from "@/lib/data";
+import { FOOTER_LINKS, PAYMENT_METHODS } from "@/lib/constants/footer";
 
 export default function Footer() {
-  const paymentItems = [
-    {
-      key: "VISA",
-      src: "/images/figma/footer-visa.png",
-      width: 90,
-      height: 27,
-      x: 2,
-      y: 13,
-    },
-    {
-      key: "MasterCard",
-      src: "/images/figma/footer-mastercard.png",
-      width: 85,
-      height: 49,
-      x: 7,
-      y: 1,
-    },
-    {
-      key: "CASH",
-      src: "/images/figma/footer-cash.png",
-      width: 93,
-      height: 47,
-      x: 0,
-      y: 4,
-    },
-    {
-      key: "Easy Install:",
-      src: "/images/figma/footer-easy-install.png",
-      width: 84,
-      height: 59,
-      x: 7,
-      y: 0,
-    },
-  ];
-
   return (
     <footer className="bg-[#393939] text-white">
       <div className="mx-auto w-full max-w-[1403px] px-4 py-10 lg:px-[106px] lg:py-[97px]">
@@ -79,7 +49,7 @@ export default function Footer() {
             </div>
 
             {/* Link Columns */}
-            {Object.entries(footerLinks).map(([title, links]) => (
+            {Object.entries(FOOTER_LINKS).map(([title, links]) => (
               <div key={title} className="flex flex-col gap-[21px]">
                 <h3 className="text-[20px] leading-[25px] text-[#00CAD7]">
                   {title}
@@ -102,20 +72,19 @@ export default function Footer() {
 
           {/* Payment Methods */}
           <div className="flex w-full flex-wrap items-center gap-[11px] lg:w-auto lg:flex-nowrap lg:justify-end lg:self-end">
-            {paymentItems.map((item) => (
+            {PAYMENT_METHODS.map((method) => (
               <div
-                key={item.key}
+                key={method.name}
                 className="relative h-[55px] w-[97px] overflow-hidden rounded-[5px] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_6px_14px_rgba(0,0,0,0.35)]"
-                aria-label={item.key}
-                title={item.key}
+                aria-label={method.name}
+                title={method.name}
               >
                 <Image
-                  src={item.src}
-                  alt={item.key}
-                  width={item.width}
-                  height={item.height}
-                  className="absolute"
-                  style={{ left: item.x, top: item.y }}
+                  src={method.src}
+                  alt={method.name}
+                  width={method.width}
+                  height={method.height}
+                  className="h-full w-full object-contain"
                 />
               </div>
             ))}

@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * HeroBanner Component
+ * Large hero section with headline, body, CTA, and discount badge
+ */
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 

@@ -1,16 +1,15 @@
 "use client";
 
+/**
+ * Header Component
+ * Top navigation bar with logo, search, and user actions
+ */
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, ShoppingCart, Heart, User, Phone } from "lucide-react";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Easy Monthly Installments", href: "/emi" },
-  { label: "Shop by Brands", href: "/brands" },
-  { label: "Become a Vendor", href: "/vendor" },
-];
+import { ShoppingCart, Heart, User, Phone } from "lucide-react";
+import { NAV_LINKS, TOP_BAR_PHONE } from "@/lib/constants/navigation";
 
 export default function Header() {
   const [cartCount] = useState(0);
@@ -86,7 +85,7 @@ export default function Header() {
                 <span>Call Us Now</span>
               </div>
               <div className="text-[19px] leading-none font-normal text-white">
-                +011 5827918
+                {TOP_BAR_PHONE}
               </div>
               <button className="text-[13px] leading-none text-[#00CAD7] transition-colors duration-200 hover:text-[#3DE2EC] hover:underline">
                 Sign In
@@ -134,7 +133,7 @@ export default function Header() {
             </button>
 
             <nav className="flex items-center gap-6 lg:gap-[36px]">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}

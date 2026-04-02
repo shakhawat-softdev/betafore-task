@@ -1,9 +1,11 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ProductCard from "@/components/ProductCard";
+import {
+  Footer,
+  Header,
+  ProductCard,
+  Reveal,
+  SectionNotice,
+} from "@/components";
 import Link from "next/link";
-import SectionNotice from "@/components/SectionNotice";
-import Reveal from "@/components/animations/Reveal";
 import {
   getAllProductsAction,
   getCategoriesAction,
