@@ -3,19 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Search,
-  ShoppingCart,
-  Heart,
-  User,
-  Phone,
-  Menu,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  ChevronDown,
-} from "lucide-react";
+import { Search, ShoppingCart, Heart, User, Phone } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -31,109 +19,143 @@ export default function Header() {
   return (
     <header>
       {/* ── Top Bar ── */}
-      <div className="bg-[#222831] text-white py-2 px-4">
-        <div className="max-w-[1200px] mx-auto flex items-center justify-between">
+      <div className="bg-[#03484D] text-white">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 py-4 xl:h-[68px] xl:flex-row xl:items-center xl:gap-[41px] xl:px-[61px] xl:py-0">
           {/* Logo */}
-          <Link href="/" className="no-underline" aria-label="WIN store home">
+          <Link
+            href="/"
+            className="shrink-0 no-underline"
+            aria-label="WIN store home"
+          >
             <Image
               src="/images/figma/win-logo.svg"
               alt="WIN store"
               width={135}
               height={48}
               priority
+              className="h-auto w-[132.5px] xl:w-[132.5px]"
             />
           </Link>
 
           {/* Search */}
-          <div className="flex-1 max-w-xl mx-8">
-            <div className="flex border border-gray-500 rounded overflow-hidden bg-white">
-              <div className="flex items-center gap-1 px-3 bg-white border-r border-gray-300 cursor-pointer text-gray-600 text-sm whitespace-nowrap">
-                All categories
-                <ChevronDown size={12} />
-              </div>
+          <div className="w-full max-w-[534px] xl:w-[534px] xl:flex-none">
+            <div className="flex h-[39px] w-full overflow-hidden rounded-[6px] bg-white">
+              <button
+                type="button"
+                className="flex h-full w-[157px] items-center justify-between border-r border-[#AEAEAE] px-[17.5px] text-left text-[13px] leading-[16px] text-[#ABA3A3]"
+                aria-label="All categories"
+              >
+                <span>All categories</span>
+                <Image
+                  src="/images/figma/topbar-chevron-down.svg"
+                  alt=""
+                  width={24}
+                  height={24}
+                  aria-hidden="true"
+                  className="h-6 w-6 shrink-0"
+                />
+              </button>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search for products"
-                className="flex-1 px-3 py-2 text-sm text-gray-700 outline-none"
+                className="h-full flex-1 px-[18px] text-[13px] leading-[16px] text-[#ABA3A3] outline-none placeholder:text-[#ABA3A3]"
               />
-              <button className="bg-[#00b4b4] px-4 hover:bg-[#009090] transition-colors">
-                <Search size={16} className="text-white" />
+              <button
+                type="button"
+                className="h-full w-[43px] shrink-0 overflow-hidden rounded-r-[6px]"
+                aria-label="Search"
+              >
+                <Image
+                  src="/images/figma/topbar-search-button.svg"
+                  alt=""
+                  width={43}
+                  height={38}
+                  aria-hidden="true"
+                  className="h-full w-full"
+                />
               </button>
             </div>
           </div>
 
           {/* Right: call + icons */}
-          <div className="flex items-center gap-5 text-sm">
+          <div className="flex w-full items-center justify-between gap-4 text-sm xl:ml-auto xl:w-auto xl:justify-end xl:gap-5">
             <div className="text-right">
-              <div className="flex items-center gap-1 text-xs text-gray-300">
-                <Phone size={11} /> Call Us Now
+              <div className="flex items-center gap-1 text-[13px] leading-none text-white xl:text-xs xl:text-[#E6E6E6]">
+                <Phone size={11} />
+                <span>Call Us Now</span>
               </div>
-              <div className="font-semibold text-sm">+011 5827918</div>
-              <div className="text-xs text-[#00b4b4] cursor-pointer">
+              <div className="text-[19px] leading-none font-normal text-white">
+                +011 5827918
+              </div>
+              <div className="text-[13px] leading-none text-[#00CAD7] cursor-pointer">
                 Sign In
               </div>
             </div>
 
-            <button className="flex flex-col items-center text-gray-300 hover:text-white">
+            <button className="flex flex-col items-center text-white hover:text-white/90">
               <User size={20} />
             </button>
 
-            <button className="flex flex-col items-center text-gray-300 hover:text-white">
+            <button className="flex flex-col items-center text-white hover:text-white/90">
               <Heart size={20} />
             </button>
 
-            <button className="relative flex items-center gap-1 text-gray-300 hover:text-white">
+            <button className="relative flex items-center gap-1 text-white hover:text-white/90">
               <div className="relative">
                 <ShoppingCart size={20} />
                 <span className="absolute -top-2 -right-2 bg-[#00b4b4] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {cartCount}
                 </span>
               </div>
-              <span className="text-sm">Cart</span>
+              <span className="text-[19px] leading-none">Cart</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* ── Nav Bar ── */}
-      <div className="bg-[#2d3541] text-white py-0">
-        <div className="max-w-[1200px] mx-auto flex items-center justify-between">
+      <div className="bg-[#0E3B3E] text-white shadow-[0px_4px_9px_0px_rgba(0,0,0,0.39)]">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 py-3 lg:h-[49px] lg:flex-row lg:items-center lg:justify-between lg:px-[51px] lg:py-0">
           {/* Left nav */}
-          <div className="flex items-center">
-            {/* Browse By Category */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-[#00b4b4] text-white font-semibold text-sm cursor-pointer hover:bg-[#009090] transition-colors">
-              <Menu size={16} />
-              <span>Browse By Category</span>
+          <div className="flex w-full items-center gap-3 overflow-x-auto lg:w-auto lg:gap-[36px] lg:overflow-visible lg:p-[5px]">
+            <div className="flex h-[31px] w-[179px] shrink-0 items-center gap-3 rounded-[8px]  px-[7px] py-[7px] text-[#FFFFFF]">
+              <Image
+                src="/images/figma/nav-browse-icon.svg"
+                alt=""
+                width={14}
+                height={13}
+                aria-hidden="true"
+                className="h-[12.27px] w-[13.24px] shrink-0"
+              />
+              <span className="whitespace-nowrap text-[17px] leading-[22px] text-[#FFFFFF]">
+                Brouse By Category
+              </span>
             </div>
 
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="px-4 py-3 text-gray-300 hover:text-[#00b4b4] text-sm transition-colors no-underline block"
-              >
-                {link.label}
-              </Link>
-            ))}
+            <nav className="flex items-center gap-6 lg:gap-[36px]">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="whitespace-nowrap text-[13px] leading-[16px] text-[#FFFFFF] no-underline transition-colors hover:opacity-80"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-3 pr-4">
-            {[
-              { Icon: Facebook, href: "#" },
-              { Icon: Twitter, href: "#" },
-              { Icon: Linkedin, href: "#" },
-              { Icon: Instagram, href: "#" },
-            ].map(({ Icon, href }, i) => (
-              <a
-                key={i}
-                href={href}
-                className="text-gray-400 hover:text-[#00b4b4] transition-colors"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
+          {/* Right icons */}
+          <div className="flex shrink-0 items-center justify-end lg:w-[149px] lg:pr-0">
+            <Image
+              src="/images/figma/nav-right-icon.svg"
+              alt=""
+              width={149}
+              height={22}
+              aria-hidden="true"
+              className="h-[22px] w-[149px]"
+            />
           </div>
         </div>
       </div>
