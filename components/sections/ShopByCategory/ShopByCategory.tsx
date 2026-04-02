@@ -170,7 +170,7 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                   )}
 
                   <div className="absolute left-[-9px] bottom-[12px] flex h-[49px] w-[269px] items-center gap-[10px] bg-[rgba(254,249,249,0.95)] px-[15px] shadow-[0_1px_7px_rgba(0,0,0,0.57)]">
-                    <span className="text-[25px] leading-none text-black">
+                    <span className="min-w-0 flex-1 whitespace-nowrap text-[clamp(14px,1.3vw,23px)] leading-none tracking-tight text-black">
                       {displayName}
                     </span>
                     <motion.div

@@ -6,9 +6,9 @@
  */
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, Heart, User, Phone } from "lucide-react";
-import { OptimizedImage } from "@/components/ui";
 import { NAV_LINKS, TOP_BAR_PHONE } from "@/lib/constants/navigation";
 
 export default function Header() {
@@ -26,7 +26,7 @@ export default function Header() {
             className="shrink-0 no-underline transition-transform duration-200 hover:scale-[1.02]"
             aria-label="WIN store home"
           >
-            <OptimizedImage
+            <Image
               src="/images/figma/win-logo.svg"
               alt="WIN store"
               width={135}
@@ -46,7 +46,7 @@ export default function Header() {
                 aria-label="All categories"
               >
                 <span>All categories</span>
-                <OptimizedImage
+                <Image
                   src="/images/figma/topbar-chevron-down.svg"
                   alt=""
                   width={24}
@@ -67,7 +67,7 @@ export default function Header() {
                 className="h-full w-[43px] shrink-0 overflow-hidden rounded-r-[6px] transition duration-200 hover:brightness-95 active:scale-[0.98]"
                 aria-label="Search"
               >
-                <OptimizedImage
+                <Image
                   src="/images/figma/topbar-search-button.svg"
                   alt=""
                   width={43}
@@ -122,7 +122,7 @@ export default function Header() {
           {/* Left nav */}
           <div className="flex w-full items-center gap-3 overflow-x-auto lg:w-auto lg:gap-[36px] lg:overflow-visible lg:p-[5px]">
             <button className="flex h-[31px] w-[179px] shrink-0 items-center gap-3 rounded-[8px] px-[7px] py-[7px] text-[#FFFFFF] transition-colors duration-200 ">
-              <OptimizedImage
+              <Image
                 src="/images/figma/nav-browse-icon.svg"
                 alt=""
                 width={14}
@@ -150,7 +150,7 @@ export default function Header() {
 
           {/* Right icons */}
           <div className="flex shrink-0 items-center justify-end lg:w-[149px] lg:pr-0">
-            <OptimizedImage
+            <Image
               src="/images/figma/nav-right-icon.svg"
               alt=""
               width={149}

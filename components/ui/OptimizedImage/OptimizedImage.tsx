@@ -2,6 +2,7 @@
 
 import Image, { ImageProps } from "next/image";
 import { useState } from "react";
+import { ImageOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface OptimizedImageProps extends Omit<ImageProps, "quality"> {
@@ -32,6 +33,10 @@ interface OptimizedImageProps extends Omit<ImageProps, "quality"> {
    */
   containerClassName?: string;
   /**
+   * Class name applied to the image-not-found fallback container.
+   */
+  fallbackClassName?: string;
+  /**
    * Alt text is required for accessibility
    */
   alt: string;
@@ -55,6 +60,7 @@ export function OptimizedImage({
   showSkeleton = true,
   skeletonClassName,
   containerClassName,
+  fallbackClassName,
   alt,
   className,
   onLoad,
@@ -83,6 +89,23 @@ export function OptimizedImage({
           )}
         />
       )}
+      {hasError && (
+        <span
+          role="img"
+          aria-label={`${alt || "Image"} not available`}
+          className={cn(
+            "absolute inset-0 flex items-center justify-center rounded bg-gray-100 text-gray-500",
+            fallbackClassName,
+          )}
+        >
+          <span className="flex flex-col items-center gap-1">
+            <ImageOff size={22} strokeWidth={1.8} />
+            <span className="text-[10px] font-semibold uppercase tracking-wide">
+              Image Unavailable
+            </span>
+          </span>
+        </span>
+      )}
       <Image
         quality={quality}
         loading={resolvedLoading}
@@ -98,6 +121,7 @@ export function OptimizedImage({
         }}
         className={cn(
           className,
+          hasError ? "opacity-0" : "",
           shouldShowSkeleton ? "opacity-0" : "opacity-100",
           "transition-opacity duration-300",
         )}

@@ -47,7 +47,7 @@ export default function ProductCard({ product }: Props) {
         <div className="relative h-36 mx-3 my-2">
           <OptimizedImage
             src={product.image}
-            alt={product.title}
+            alt=""
             fill
             loading="lazy"
             quality={80}
