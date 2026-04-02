@@ -38,15 +38,15 @@ export default function BestDeals({
 
           {/* Scroll arrows + Tabs (right aligned) */}
           <div className="w-full md:ml-auto md:w-auto">
-            <div className="flex items-center justify-end gap-2">
-              <div className="flex flex-wrap items-center justify-end gap-2 md:flex-nowrap md:gap-0">
+            <div className="flex items-center justify-end gap-5">
+              <div className="flex flex-wrap items-center justify-end gap-3 md:flex-nowrap md:gap-2">
                 {categories.map((tab) => (
                   <motion.button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.name)}
                     whileHover={{ y: -1 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`px-3 py-2 text-center text-xs leading-tight font-semibold normal-case transition-colors sm:px-4 sm:py-3 sm:text-sm md:shrink-0 md:whitespace-nowrap md:uppercase ${
+                    className={`px-4 py-2 text-center text-xs leading-tight font-semibold normal-case transition-colors sm:px-5 sm:py-3 sm:text-sm md:shrink-0 md:whitespace-nowrap md:uppercase ${
                       activeTab === tab.name
                         ? "text-[#00b4b4] border-b-2 border-[#00b4b4]"
                         : "text-gray-600 hover:text-[#00b4b4] border-b-2 border-transparent"
