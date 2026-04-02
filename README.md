@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WIN Store — Next.js E-Commerce
+
+Converted from Figma design to Next.js 14 with TypeScript and Tailwind CSS.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+ecommerce/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Home page
+│   ├── globals.css         # Global styles
+│   └── products/page.tsx   # Products listing page
+├── components/
+│   ├── Header.tsx          # Top bar + navigation bar
+│   ├── HeroBanner.tsx      # Auto-sliding hero carousel
+│   ├── ShopByCategory.tsx  # Category cards with arrows
+│   ├── NewArrivals.tsx     # New arrivals product grid
+│   ├── BestDeals.tsx       # Tabbed deals section (2 rows × 6)
+│   ├── ProductCard.tsx     # Reusable product card
+│   └── Footer.tsx          # Footer with links & payment badges
+├── lib/
+│   └── data.ts             # All mock data (products, categories, etc.)
+├── tailwind.config.ts
+├── next.config.js
+└── package.json
+```
 
-## Learn More
+## Design System
 
-To learn more about Next.js, take a look at the following resources:
+| Token       | Value       |
+|-------------|-------------|
+| Brand Teal  | `#00b4b4`   |
+| Dark BG     | `#222831`   |
+| Nav BG      | `#2d3541`   |
+| Orange badge| `#f97316`   |
+| Blue CTA    | `#1a6ff0`   |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features Implemented
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ Sticky header with search bar + category dropdown
+- ✅ Top contact bar + social icons in nav
+- ✅ Auto-play hero carousel (5s) with dots + prev/next arrows
+- ✅ Category cards with image + scrollable arrows
+- ✅ New Arrivals 6-column product grid
+- ✅ Best Deals with tab switcher (Kitchen, Consoles, TV, Cell Phones, Grocery)
+- ✅ Two-row product layout in Best Deals
+- ✅ Strikethrough pricing + teal sale price
+- ✅ Add to cart button with confirmation state
+- ✅ Footer with 3 link columns + payment badges
+- ✅ Copyright bar
 
-## Deploy on Vercel
+## Connecting a Real API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Replace the mock data in `lib/data.ts` with real API calls.
+For example, using the `app/` directory with server components:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```typescript
+// app/page.tsx (server component)
+async function getProducts() {
+  const res = await fetch("https://your-api.com/products");
+  return res.json();
+}
+```
