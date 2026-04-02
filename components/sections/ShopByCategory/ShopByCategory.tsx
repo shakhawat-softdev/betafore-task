@@ -38,7 +38,7 @@ const categoryImageByName: Record<string, string> = {
 };
 
 const figmaArrowButtonClass =
-  "h-[66px] w-[66px] items-center justify-center bg-transparent disabled:opacity-30";
+  "h-10 w-10 items-center justify-center bg-transparent disabled:opacity-30 sm:h-[66px] sm:w-[66px]";
 
 /**
  * Left arrow SVG icon
@@ -125,7 +125,7 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
       </button>
 
       <div className="mx-auto flex w-full max-w-[1400px] justify-center px-4">
-        <div className="flex w-full max-w-[1262px] gap-[33px] overflow-hidden p-[15px]">
+        <div className="flex w-full max-w-[1262px] gap-3 overflow-hidden p-2 sm:gap-4 sm:p-3 lg:gap-[33px] lg:p-[15px]">
           <button
             onClick={prev}
             disabled={startIndex === 0}
@@ -151,7 +151,7 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.35, delay: index * 0.05 }}
                   whileHover={{ y: -4, scale: 1.01 }}
-                  className={`relative h-[199px] w-full overflow-hidden bg-gradient-to-br ${
+                  className={`relative h-[190px] w-full overflow-hidden bg-gradient-to-br sm:h-[199px] ${
                     categoryCardClasses[
                       (startIndex + index) % categoryCardClasses.length
                     ]
@@ -169,7 +169,7 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                     />
                   )}
 
-                  <div className="absolute left-[-9px] bottom-[12px] flex h-[49px] w-[269px] items-center gap-[10px] bg-[rgba(254,249,249,0.95)] px-[15px] shadow-[0_1px_7px_rgba(0,0,0,0.57)]">
+                  <div className="absolute bottom-[8px] left-2 right-2 flex min-h-[42px] items-center gap-[8px] bg-[rgba(254,249,249,0.95)] px-[10px] shadow-[0_1px_7px_rgba(0,0,0,0.57)] sm:bottom-[12px] sm:left-[-9px] sm:right-auto sm:h-[49px] sm:w-[269px] sm:gap-[10px] sm:px-[15px]">
                     <span className="min-w-0 flex-1 whitespace-nowrap text-[clamp(14px,1.3vw,23px)] leading-none tracking-tight text-black">
                       {displayName}
                     </span>
@@ -179,14 +179,14 @@ export default function ShopByCategory({ categories }: ShopByCategoryProps) {
                     >
                       <Link
                         href={`/products?category=${encodeURIComponent(cat.name)}`}
-                        className="ml-auto flex h-[38px] w-[96px] items-center justify-center bg-[#0AAEB9] text-[17px] text-white"
+                        className="ml-auto flex h-[30px] w-[78px] items-center justify-center bg-[#0AAEB9] text-[14px] text-white sm:h-[38px] sm:w-[96px] sm:text-[17px]"
                       >
                         Shop
                       </Link>
                     </motion.div>
                   </div>
 
-                  <div className="absolute left-[-9px] bottom-[60px] h-0 w-0 border-r-[11px] border-r-transparent border-t-[8px] border-t-[#220F0F]" />
+                  <div className="absolute bottom-[60px] left-[-9px] hidden h-0 w-0 border-r-[11px] border-r-transparent border-t-[8px] border-t-[#220F0F] sm:block" />
                 </motion.div>
               );
             })}
