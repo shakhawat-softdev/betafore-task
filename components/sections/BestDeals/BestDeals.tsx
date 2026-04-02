@@ -30,37 +30,43 @@ export default function BestDeals({
   return (
     <section className="max-w-[1200px] mx-auto px-4 pb-10">
       {/* Header with tabs */}
-      <div className="flex items-center justify-between border-b border-gray-200 mb-5 pb-0">
-        <h2 className="text-2xl font-extrabold text-gray-900 pb-3 pr-6 border-b-0">
-          <span className="text-[#00b4b4]">Best</span> <span>Deals</span>
-        </h2>
+      <div className="mb-5 border-b border-gray-200 pb-0">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <h2 className="pb-2 pr-0 text-2xl font-extrabold text-gray-900 md:pb-3 md:pr-6">
+            <span className="text-[#00b4b4]">Best</span> <span>Deals</span>
+          </h2>
 
-        <div className="flex items-center gap-0 flex-1">
-          {categories.map((tab) => (
-            <motion.button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.name)}
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              className={`px-4 py-3 text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
-                activeTab === tab.name
-                  ? "text-[#00b4b4] border-b-2 border-[#00b4b4]"
-                  : "text-gray-600 hover:text-[#00b4b4] border-b-2 border-transparent"
-              }`}
-            >
-              {tab.name}
-            </motion.button>
-          ))}
-        </div>
+          {/* Scroll arrows + Tabs (right aligned) */}
+          <div className="w-full md:ml-auto md:w-auto">
+            <div className="flex items-center justify-end gap-2">
+              <div className="hidden items-center gap-1 pb-2 md:flex">
+                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
+                  <ChevronLeft size={14} />
+                </button>
+                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
+                  <ChevronRight size={14} />
+                </button>
+              </div>
 
-        {/* Scroll arrows */}
-        <div className="flex items-center gap-1 pb-2">
-          <button className="border border-gray-300 p-1 rounded hover:bg-gray-100 transition-colors">
-            <ChevronLeft size={14} />
-          </button>
-          <button className="border border-gray-300 p-1 rounded hover:bg-gray-100 transition-colors">
-            <ChevronRight size={14} />
-          </button>
+              <div className="flex flex-wrap items-center justify-end gap-2 md:flex-nowrap md:gap-0">
+                {categories.map((tab) => (
+                  <motion.button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.name)}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`px-3 py-2 text-center text-xs leading-tight font-semibold normal-case transition-colors sm:px-4 sm:py-3 sm:text-sm md:shrink-0 md:whitespace-nowrap md:uppercase ${
+                      activeTab === tab.name
+                        ? "text-[#00b4b4] border-b-2 border-[#00b4b4]"
+                        : "text-gray-600 hover:text-[#00b4b4] border-b-2 border-transparent"
+                    }`}
+                  >
+                    {tab.name}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
