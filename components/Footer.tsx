@@ -1,96 +1,122 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Phone,
-  Mail,
-} from "lucide-react";
 import { footerLinks } from "@/lib/data";
 
 export default function Footer() {
+  const paymentItems = [
+    {
+      key: "VISA",
+      src: "/images/figma/footer-visa.png",
+      width: 90,
+      height: 27,
+      x: 2,
+      y: 13,
+    },
+    {
+      key: "MasterCard",
+      src: "/images/figma/footer-mastercard.png",
+      width: 85,
+      height: 49,
+      x: 7,
+      y: 1,
+    },
+    {
+      key: "CASH",
+      src: "/images/figma/footer-cash.png",
+      width: 93,
+      height: 47,
+      x: 0,
+      y: 4,
+    },
+    {
+      key: "Easy Install:",
+      src: "/images/figma/footer-easy-install.png",
+      width: 84,
+      height: 59,
+      x: 7,
+      y: 0,
+    },
+  ];
+
   return (
-    <footer className="bg-[#222831] text-gray-300">
-      <div className="max-w-[1200px] mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <div>
-            {/* Logo */}
-            <div className="mb-3">
-              <Image
-                src="/images/figma/win-logo.svg"
-                alt="WIN store"
-                width={135}
-                height={48}
-              />
+    <footer className="bg-[#393939] text-white">
+      <div className="mx-auto w-full max-w-[1403px] px-4 py-10 lg:px-[106px] lg:py-[97px]">
+        <div className="flex flex-col gap-10 lg:items-end">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-[auto_auto_auto_auto] md:gap-16 lg:w-[1105px]">
+            {/* Brand Column */}
+            <div className="flex flex-col gap-[14px]">
+              {/* Logo */}
+              <div className="mb-3">
+                <Image
+                  src="/images/figma/win-logo.svg"
+                  alt="WIN store"
+                  width={133}
+                  height={48}
+                />
+              </div>
+
+              <p className="text-[18px] leading-[17px] tracking-[0.011em] text-white">
+                Got questions? Call us 24/7!
+              </p>
+              <p className="whitespace-pre-line text-[13px] leading-[17px] tracking-[0.015em] text-white">
+                {"03 111 666 144\n0317 1777015."}
+              </p>
+
+              <p className="whitespace-pre-line text-[18px] leading-[17px] tracking-[0.011em] text-white">
+                {"Contact info\ninfo@winstore.pk"}
+              </p>
+
+              {/* Social */}
+              <div className="mt-1">
+                <Image
+                  src="/images/figma/nav-right-icon.svg"
+                  alt="Social links"
+                  width={149}
+                  height={22}
+                  className="h-[22px] w-[149px]"
+                />
+              </div>
             </div>
 
-            <p className="text-[#00b4b4] font-semibold text-sm mb-3">
-              Got questions? Call us 24/7!
-            </p>
-            <div className="flex items-center gap-2 text-sm mb-1">
-              <Phone size={13} className="text-gray-400" />
-              <span>03 111 666 144</span>
-            </div>
-            <div className="text-sm mb-4 ml-5">0317 1777015.</div>
-
-            <p className="text-[#00b4b4] font-semibold text-sm mb-1">
-              Contact info
-            </p>
-            <div className="flex items-center gap-2 text-sm mb-5">
-              <Mail size={13} className="text-gray-400" />
-              <span>info@winstore.pk</span>
-            </div>
-
-            {/* Social */}
-            <div className="flex items-center gap-3">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-7 h-7 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-[#00b4b4] hover:border-[#00b4b4] transition-colors"
-                >
-                  <Icon size={13} />
-                </a>
-              ))}
-            </div>
+            {/* Link Columns */}
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title} className="flex flex-col gap-[21px]">
+                <h3 className="text-[20px] leading-[25px] text-[#00CAD7]">
+                  {title}
+                </h3>
+                <ul className="flex flex-col gap-3">
+                  {links.map((link) => (
+                    <li key={link}>
+                      <Link
+                        href="#"
+                        className="text-[13px] leading-[16px] text-white no-underline transition-opacity hover:opacity-80"
+                      >
+                        {link}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          {/* Link Columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h3 className="text-[#00b4b4] font-bold text-base mb-4">
-                {title}
-              </h3>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link}>
-                    <Link
-                      href="#"
-                      className="text-gray-400 hover:text-[#00b4b4] text-sm transition-colors no-underline"
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Payment Methods */}
-        <div className="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div /> {/* spacer */}
-          <div className="flex items-center gap-3">
-            {/* Payment badges */}
-            {["VISA", "MasterCard", "CASH", "Easy Install"].map((method) => (
+          {/* Payment Methods */}
+          <div className="flex w-full flex-wrap items-center gap-[11px] lg:w-auto lg:flex-nowrap lg:justify-end lg:self-end">
+            {paymentItems.map((item) => (
               <div
-                key={method}
-                className="bg-white rounded px-3 py-1.5 text-xs font-bold text-gray-700 shadow-sm"
+                key={item.key}
+                className="relative h-[55px] w-[97px] overflow-hidden rounded-[5px] bg-white"
+                aria-label={item.key}
+                title={item.key}
               >
-                {method}
+                <Image
+                  src={item.src}
+                  alt={item.key}
+                  width={item.width}
+                  height={item.height}
+                  className="absolute"
+                  style={{ left: item.x, top: item.y }}
+                />
               </div>
             ))}
           </div>
@@ -98,8 +124,12 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="bg-[#1a1e24] text-center py-3 text-xs text-gray-500">
-        © 2021 Winstore. All Rights Reserved.
+      <div className="h-[60px] bg-[#161616]">
+        <div className="relative mx-auto h-full w-full max-w-[1404px]">
+          <p className="absolute left-1/2 top-[21px] w-[322px] -translate-x-1/2 text-center text-[18px] leading-[17px] tracking-[0.011em] text-white md:left-[124px] md:translate-x-0">
+            © 2021 Winstore. All Rights Reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
