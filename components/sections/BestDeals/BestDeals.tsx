@@ -57,11 +57,11 @@ export default function BestDeals({
                 ))}
               </div>
               <div className="hidden items-center gap-1 pb-2 md:flex">
-                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
-                  <ChevronLeft size={14} />
+                <button className="rounded p-1 text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900">
+                  <ChevronLeft size={17} strokeWidth={3} />
                 </button>
-                <button className="rounded border border-gray-300 p-1 transition-colors hover:bg-gray-100">
-                  <ChevronRight size={14} />
+                <button className="rounded p-1 text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900">
+                  <ChevronRight size={17} strokeWidth={3} />
                 </button>
               </div>
             </div>
